@@ -79,7 +79,12 @@ export const ConnectedRichTextEditor = (props: ConnectedProps) => {
                 {/* Custom toolbars are placed underneath Contentful's built-in one */}
                 {props?.customToolbars?.map((ToolbarComponent, index) => {
                   return (
-                    <ToolbarComponent id={`RTEditor-Custom-Toolbar-${index}`} key={index} isDisabled={props.isDisabled || false} />
+                    <ToolbarComponent
+                      id={`RTEditor-Custom-Toolbar-${index}`}
+                      key={index}
+                      isDisabled={props.isDisabled || false}
+                      sdk={sdk}
+                    />
                   );
                 })}
               </StickyToolbarWrapper>
