@@ -1,3 +1,4 @@
+import { FieldExtensionSDK } from '@contentful/app-sdk';
 import { SoftBreakRule, ExitBreakRule } from '@udecode/plate-break';
 import * as p from '@udecode/plate-common';
 import { ResetNodePluginRule } from '@udecode/plate-reset-node';
@@ -8,8 +9,9 @@ import { Value, PlateEditor } from './editor';
 export type KeyboardHandler<P = p.PluginOptions> = p.KeyboardHandler<P, Value, PlateEditor>;
 
 export interface CustomToolbarProps {
-  [index:string]: unknown;
+  [index: string]: unknown;
   isDisabled: boolean;
+  sdk: FieldExtensionSDK;
 }
 
 export interface PlatePlugin extends p.PlatePlugin<p.AnyObject, Value, PlateEditor> {
