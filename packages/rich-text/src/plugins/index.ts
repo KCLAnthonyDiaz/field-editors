@@ -50,12 +50,27 @@ export const getPlugins = (
   sdk: FieldAppSDK,
   onAction: RichTextTrackingActionHandler,
   restrictedMarks?: string[],
-  customPlugins?: Array<(constructionArgs: CustomPlatePluginCallback) => PlatePlugin>
+  preLoadPlugins?: Array<(constructionArgs: CustomPlatePluginCallback) => PlatePlugin>,
+  postLoadPlugins?: Array<(constructionArgs: CustomPlatePluginCallback) => PlatePlugin>
 ): PlatePlugin[] => [
   createDeserializeDocxPlugin(),
 
   // Tracking - This should come first so all plugins below will have access to `editor.tracking`
   createTrackingPlugin(onAction),
+
+  // Pre-load plugins enable overwriting block handling behavior in the rendering pipeline
+  //   In the event you are using pre-load plugins, you SHOULD NOT register toolbars and custom blocks,
+  //   save that for post-load phase.  These plugins should attempt to overwrite a default block behavior.
+  // We need to check if the post-load-plugins are defined before use because it is an
+  // optional parameter.
+  ...(Array.isArray(preLoadPlugins)
+      ? preLoadPlugins.map((customPluginCallback) => {
+        return customPluginCallback.call(this, {
+          sdk,
+          restrictedMarks: restrictedMarks || [],
+        });
+      })
+      : []),
 
   // Global / Global shortcuts
   createDragAndDropPlugin(),
@@ -98,10 +113,12 @@ export const getPlugins = (
   createResetNodePlugin(),
   createNormalizerPlugin(),
 
-  // We need to check if the plugins are defined before use because it is an
+  // Post-load plugins enable adding new custom functionality
+  //   These plugins should attempt to add new functionality to the editor.
+  // We need to check if the post-load-plugins are defined before use because it is an
   // optional parameter.
-  ...(Array.isArray(customPlugins)
-    ? customPlugins.map((customPluginCallback) => {
+  ...(Array.isArray(postLoadPlugins)
+    ? postLoadPlugins.map((customPluginCallback) => {
         return customPluginCallback.call(this, {
           sdk,
           restrictedMarks: restrictedMarks || [],
