@@ -32,7 +32,8 @@ type ConnectedProps = {
   isToolbarHidden?: boolean;
   actionsDisabled?: boolean;
   restrictedMarks?: string[];
-  customPlugins?: Array<(constructionArgs: CustomPlatePluginCallback) => PlatePlugin>;
+  preLoadCustomPlugins?: Array<(constructionArgs: CustomPlatePluginCallback) => PlatePlugin>;
+  postLoadCustomPlugins?: Array<(constructionArgs: CustomPlatePluginCallback) => PlatePlugin>;
   customToolbars?: Array<React.JSXElementConstructor<CustomToolbarProps>>;
 };
 
@@ -41,8 +42,8 @@ export const ConnectedRichTextEditor = (props: ConnectedProps) => {
 
   const id = getContentfulEditorId(sdk);
   const plugins = React.useMemo(
-    () => getPlugins(sdk, onAction ?? noop, restrictedMarks, props?.customPlugins ?? []),
-    [sdk, onAction, restrictedMarks, props?.customPlugins]
+    () => getPlugins(sdk, onAction ?? noop, restrictedMarks, props.preLoadCustomPlugins, props?.postLoadCustomPlugins ?? []),
+    [sdk, onAction, restrictedMarks, props.preLoadCustomPlugins, props?.postLoadCustomPlugins]
   );
 
   const initialValue = React.useMemo(() => {

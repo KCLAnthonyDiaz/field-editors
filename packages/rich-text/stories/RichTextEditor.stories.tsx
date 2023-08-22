@@ -274,7 +274,7 @@ const DemoRichTextEditor = () => {
           onAction={onAction}
           isInitiallyDisabled={isDisabled as boolean}
           restrictedMarks={JSON.parse(window.localStorage.getItem('restrictedMarks') as any) || []}
-          customPlugins={
+          postLoadCustomPlugins={
             (requestedAddon !== null && requestedAddon?.plugin) ?
               [requestedAddon.plugin] :
               []
