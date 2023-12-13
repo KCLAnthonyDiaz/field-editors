@@ -8,7 +8,7 @@ import {
   inline,
   text,
 } from '../../../packages/rich-text/src/helpers/nodeFactory';
-import { getIframe } from '../../fixtures/utils';
+import { getIframe, openEditLink } from '../../fixtures/utils';
 import { RichTextPage } from './RichTextPage';
 
 // the sticky toolbar gets in the way of some of the tests, therefore
@@ -166,6 +166,50 @@ describe('Rich Text Editor - Links', { viewportHeight: 2000 }, () => {
         cy.unsetShouldConfirm();
       });
 
+      it('converts text to resource hyperlink', () => {
+        cy.shouldConfirm(true);
+        safelyType('My cool resource{selectall}');
+        triggerLinkModal();
+        const form = richText.forms.hyperlink;
+
+        form.linkText.should('have.value', 'My cool resource');
+        form.submit.should('be.disabled');
+
+        form.linkType.should('have.value', 'hyperlink').select(INLINES.RESOURCE_HYPERLINK);
+        form.submit.should('be.disabled');
+
+        getIframe().findByTestId('cf-ui-entry-card').should('not.exist');
+        form.linkEntityTarget.should('have.text', 'Select entry').click();
+        getIframe().findByTestId('cf-ui-entry-card').should('exist');
+
+        form.linkEntityTarget.should('have.text', 'Remove selection').click();
+        getIframe().findByTestId('cf-ui-entry-card').should('not.exist');
+
+        form.linkEntityTarget.should('have.text', 'Select entry').click();
+        getIframe().findByTestId('cf-ui-entry-card').should('exist');
+
+        form.submit.click();
+
+        expectDocumentStructure(
+          ['text', ''],
+          [
+            INLINES.RESOURCE_HYPERLINK,
+            {
+              target: {
+                sys: {
+                  urn: 'crn:contentful:::content:spaces/space-id/entries/example-entity-urn',
+                  type: 'ResourceLink',
+                  linkType: 'Contentful:Entry',
+                },
+              },
+            },
+            'My cool resource',
+          ],
+          ['text', '']
+        );
+        cy.unsetShouldConfirm();
+      });
+
       it('converts text to asset hyperlink', () => {
         cy.shouldConfirm(true);
         safelyType('My cool asset{selectall}');
@@ -226,12 +270,7 @@ describe('Rich Text Editor - Links', { viewportHeight: 2000 }, () => {
 
         // Part 2:
         // Update hyperlink to entry link
-
-        richText.editor
-          .findByTestId('cf-ui-text-link')
-          .should('have.text', 'My cool website')
-          .click({ force: true });
-
+        openEditLink();
         form.linkText.should('not.exist');
         form.linkType.should('have.value', 'hyperlink').select('entry-hyperlink');
         form.linkEntityTarget.should('have.text', 'Select entry').click();
@@ -249,12 +288,7 @@ describe('Rich Text Editor - Links', { viewportHeight: 2000 }, () => {
 
         // Part 3:
         // Update entry link to asset link
-
-        richText.editor
-          .findByTestId('cf-ui-text-link')
-          .should('have.text', 'My cool website')
-          .click({ force: true });
-
+        openEditLink();
         form.linkText.should('not.exist');
         form.linkType.should('have.value', 'entry-hyperlink').select('asset-hyperlink');
         form.linkEntityTarget.should('have.text', 'Select asset').click();
@@ -270,16 +304,37 @@ describe('Rich Text Editor - Links', { viewportHeight: 2000 }, () => {
           ['text', '']
         );
 
-        // Part 3:
-        // Update asset link to hyperlink
-
-        richText.editor
-          .findByTestId('cf-ui-text-link')
-          .should('have.text', 'My cool website')
-          .click({ force: true });
-
+        // Part 4:
+        // Update asset link to resource link
+        openEditLink();
         form.linkText.should('not.exist');
-        form.linkType.should('have.value', 'asset-hyperlink').select('hyperlink');
+        form.linkType.should('have.value', 'asset-hyperlink').select('resource-hyperlink');
+        form.linkEntityTarget.should('have.text', 'Select entry').click();
+        form.submit.click();
+
+        expectDocumentStructure(
+          ['text', ''],
+          [
+            INLINES.RESOURCE_HYPERLINK,
+            {
+              target: {
+                sys: {
+                  urn: 'crn:contentful:::content:spaces/space-id/entries/example-entity-urn',
+                  type: 'ResourceLink',
+                  linkType: 'Contentful:Entry',
+                },
+              },
+            },
+            'My cool website',
+          ],
+          ['text', '']
+        );
+
+        // Part 5:
+        // Update resource link to hyperlink
+        openEditLink();
+        form.linkText.should('not.exist');
+        form.linkType.should('have.value', 'resource-hyperlink').select('hyperlink');
         form.linkTarget.type('https://zombo.com');
         form.submit.click();
 

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.21.0](https://github.com/contentful/field-editors/compare/@contentful/field-editor-reference@5.20.0...@contentful/field-editor-reference@5.21.0) (2023-12-08)
+
+### Features
+
+- support CMA.js v11 ([#1559](https://github.com/contentful/field-editors/issues/1559)) ([2bfcf61](https://github.com/contentful/field-editors/commit/2bfcf611f4066848343e29c9aa4acdcc70c85712))
+
+# [5.20.0](https://github.com/contentful/field-editors/compare/@contentful/field-editor-reference@5.19.0...@contentful/field-editor-reference@5.20.0) (2023-11-14)
+
+### Features
+
+- [] Add shared query cache ([#1540](https://github.com/contentful/field-editors/issues/1540)) ([ef33b23](https://github.com/contentful/field-editors/commit/ef33b23f88985022a72b8932c9ea41c579d84509))
+
+# [5.19.0](https://github.com/contentful/field-editors/compare/@contentful/field-editor-reference@5.18.0...@contentful/field-editor-reference@5.19.0) (2023-10-24)
+
+### Features
+
+- increase space for space name ([#1523](https://github.com/contentful/field-editors/issues/1523)) ([328a133](https://github.com/contentful/field-editors/commit/328a1339e149316548169e3b016027c1f541a9b6))
+
+# [5.18.0](https://github.com/contentful/field-editors/compare/@contentful/field-editor-reference@5.17.0...@contentful/field-editor-reference@5.18.0) (2023-10-23)
+
+### Features
+
+- file info new UI [] ([#1520](https://github.com/contentful/field-editors/issues/1520)) ([9a47ccc](https://github.com/contentful/field-editors/commit/9a47cccf9fe31a09b72b51673924380d73d206e2))
+
 # [5.17.0](https://github.com/contentful/field-editors/compare/@contentful/field-editor-reference@5.16.3...@contentful/field-editor-reference@5.17.0) (2023-10-09)
 
 ### Features

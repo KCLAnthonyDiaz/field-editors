@@ -63,7 +63,7 @@
     "@storybook/react-webpack5": "^7.0.18",
     "@swc/cli": "^0.1.62",
     "@swc/core": "^1.3.57",
-    "@swc/jest": "0.2.26",
+    "@swc/jest": "0.2.29",
     "@testing-library/cypress": "^8.0.2",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "11.2.6",
@@ -78,7 +78,7 @@
     "ajv": "^8.8.2",
     "concurrently": "8.0.1",
     "contentful-cli": "^1.3.29",
-    "cypress": "^12.10.0",
+    "cypress": "^13.4.0",
     "cypress-plugin-tab": "^1.0.5",
     "cz-lerna-changelog": "^2.0.2",
     "emotion": "10.0.27",
@@ -109,7 +109,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-markdown": "^8.0.7",
-    "remark-cli": "^8.0.0",
+    "remark-cli": "^12.0.0",
     "remark-gfm": "^3.0.1",
     "remark-lint-no-dead-urls": "^1.0.2",
     "remark-lint-no-empty-sections": "^4.0.0",
@@ -135,7 +135,8 @@
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
-    "@contentful/app-sdk": "4.21.1"
+    "@contentful/app-sdk": "4.21.1",
+    "@contentful/rich-text-types": "^16.3.0"
   },
   "browserslist": {
     "production": "extends @contentful/browserslist-config",

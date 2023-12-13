@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.3](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.16.2...@contentful/field-editor-rich-text@3.16.3) (2023-12-08)
+
+**Note:** Version bump only for package @contentful/field-editor-rich-text
+
+## [3.16.2](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.16.1...@contentful/field-editor-rich-text@3.16.2) (2023-11-29)
+
+### Bug Fixes
+
+- add plate common dependency to rich-text ([#1555](https://github.com/contentful/field-editors/issues/1555)) ([b76baf2](https://github.com/contentful/field-editors/commit/b76baf20f08ddbf975080f7d76da62123978b182))
+
+## [3.16.1](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.16.0...@contentful/field-editor-rich-text@3.16.1) (2023-11-20)
+
+### Bug Fixes
+
+- rich text link copy to google docs [TOL-1647] ([#1544](https://github.com/contentful/field-editors/issues/1544)) ([8db95f4](https://github.com/contentful/field-editors/commit/8db95f40ebf4811899085e324d697499244434cf))
+
+# [3.16.0](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.15.2...@contentful/field-editor-rich-text@3.16.0) (2023-11-15)
+
+### Features
+
+- hyperlink edit popover modal ([#1542](https://github.com/contentful/field-editors/issues/1542)) ([e555443](https://github.com/contentful/field-editors/commit/e555443c9e6f35117d80543493d7f09b9c85c460))
+
+## [3.15.2](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.15.1...@contentful/field-editor-rich-text@3.15.2) (2023-11-14)
+
+**Note:** Version bump only for package @contentful/field-editor-rich-text
+
+## [3.15.1](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.15.0...@contentful/field-editor-rich-text@3.15.1) (2023-11-09)
+
+### Bug Fixes
+
+- show RT embed button for only inline resource ([#1539](https://github.com/contentful/field-editors/issues/1539)) ([cb471fc](https://github.com/contentful/field-editors/commit/cb471fce3cbc772c74e32c045fac50673c787614))
+
+# [3.15.0](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.14.3...@contentful/field-editor-rich-text@3.15.0) (2023-11-02)
+
+### Features
+
+- show environment in resource inline block ([#1532](https://github.com/contentful/field-editors/issues/1532)) ([3e897e7](https://github.com/contentful/field-editors/commit/3e897e7a8c6d9b93c9c80d0621c6e3e1628c73e0))
+
+## [3.14.3](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.14.2...@contentful/field-editor-rich-text@3.14.3) (2023-11-01)
+
+### Bug Fixes
+
+- tooltip link placement richtext [ZEND-4296] ([#1530](https://github.com/contentful/field-editors/issues/1530)) ([af46f67](https://github.com/contentful/field-editors/commit/af46f675e8c593db7ea72bd63f8ac005d92ec91b))
+
+## [3.14.2](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.14.1...@contentful/field-editor-rich-text@3.14.2) (2023-10-24)
+
+**Note:** Version bump only for package @contentful/field-editor-rich-text
+
+## [3.14.1](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.14.0...@contentful/field-editor-rich-text@3.14.1) (2023-10-23)
+
+**Note:** Version bump only for package @contentful/field-editor-rich-text
+
+# [3.14.0](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.13.0...@contentful/field-editor-rich-text@3.14.0) (2023-10-23)
+
+### Features
+
+- add resource hyperlink node type ([#1519](https://github.com/contentful/field-editors/issues/1519)) ([8c4219a](https://github.com/contentful/field-editors/commit/8c4219af167d07d86b32c9a0ac92c8e9acedd00c))
+
+# [3.13.0](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.12.7...@contentful/field-editor-rich-text@3.13.0) (2023-10-23)
+
+### Features
+
+- Introduce new node type: embedded inline resource [DANTE-1167] ([#1518](https://github.com/contentful/field-editors/issues/1518)) ([24511d4](https://github.com/contentful/field-editors/commit/24511d41ec7c99df2b1ddb23ecfb9f0692d2ab43))
+
 ## [3.12.7](https://github.com/contentful/field-editors/compare/@contentful/field-editor-rich-text@3.12.6...@contentful/field-editor-rich-text@3.12.7) (2023-10-11)
 
 **Note:** Version bump only for package @contentful/field-editor-rich-text

@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { FieldAppSDK } from '@contentful/app-sdk';
 import { PlateProps } from '@udecode/plate-common';
 import { createDeserializeDocxPlugin } from '@udecode/plate-serializer-docx';
@@ -13,6 +15,7 @@ import {
 } from './EmbeddedEntityBlock';
 import { createEmbeddedEntityInlinePlugin } from './EmbeddedEntityInline';
 import { createEmbeddedResourceBlockPlugin } from './EmbeddedResourceBlock';
+import { createEmbeddedResourceInlinePlugin } from './EmbeddedResourceInline';
 import { createHeadingPlugin } from './Heading';
 import { createHrPlugin } from './Hr';
 import { createHyperlinkPlugin } from './Hyperlink';
@@ -28,7 +31,6 @@ import { createTextPlugin } from './Text';
 import { createTrackingPlugin, RichTextTrackingActionHandler } from './Tracking';
 import { createTrailingParagraphPlugin } from './TrailingParagraph';
 import { createVoidsPlugin } from './Voids';
-import * as React from "react";
 
 export interface CustomPlatePluginCallback {
   sdk: FieldAppSDK;
@@ -64,13 +66,13 @@ export const getPlugins = (
   // We need to check if the post-load-plugins are defined before use because it is an
   // optional parameter.
   ...(Array.isArray(preLoadPlugins)
-      ? preLoadPlugins.map((customPluginCallback) => {
+    ? preLoadPlugins.map((customPluginCallback) => {
         return customPluginCallback.call(this, {
           sdk,
           restrictedMarks: restrictedMarks || [],
         });
       })
-      : []),
+    : []),
 
   // Global / Global shortcuts
   createDragAndDropPlugin(),
@@ -93,6 +95,7 @@ export const getPlugins = (
   // Inline elements
   createHyperlinkPlugin(sdk),
   createEmbeddedEntityInlinePlugin(sdk),
+  createEmbeddedResourceInlinePlugin(sdk),
 
   // Marks
   createMarksPlugin(),

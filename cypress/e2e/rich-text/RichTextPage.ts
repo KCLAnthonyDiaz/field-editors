@@ -6,21 +6,21 @@ import { getIframe, getIframeWindow } from '../../fixtures/utils';
 
 const isValidationEvent = ({ type }) => type === 'onSchemaErrorsChanged';
 
-export type EmbedType = 'entry-block' | 'asset-block' | 'resource-block' | 'entry-inline';
+export type EmbedType =
+  | 'entry-block'
+  | 'asset-block'
+  | 'resource-block'
+  | 'entry-inline'
+  | 'resource-inline';
 
 export class RichTextPage {
-  visit(customAddon:string|null = null) {
+  visit(customAddon: string | null = null) {
     // Support passing a requested custom addon to the storybook instance
-    const additionalParams:Array<string> = [
-        'cypress',
-    ];
+    const additionalParams: Array<string> = ['cypress'];
 
     // Handles both null and empty
     if (customAddon) {
-      additionalParams.push([
-        'ctflRichTextAddon',
-        encodeURIComponent(customAddon),
-      ].join('='));
+      additionalParams.push(['ctflRichTextAddon', encodeURIComponent(customAddon)].join('='));
     }
 
     cy.visit(`/?path=/docs/editors-rich-text-editor--docs&${additionalParams.join('&')}`);
@@ -103,7 +103,7 @@ export class RichTextPage {
       get lipsum() {
         return getIframe().findByTestId('custom-toolbar-lipsum-button');
       },
-    }
+    };
   }
 
   get forms() {
@@ -167,7 +167,13 @@ class HyperLinkModal {
     return getIframe().findByTestId('link-type-input');
   }
 
-  setLinkType = (type: INLINES.HYPERLINK | INLINES.ENTRY_HYPERLINK | INLINES.ASSET_HYPERLINK) => {
+  setLinkType = (
+    type:
+      | INLINES.HYPERLINK
+      | INLINES.ENTRY_HYPERLINK
+      | INLINES.ASSET_HYPERLINK
+      | INLINES.RESOURCE_HYPERLINK
+  ) => {
     this.linkType.select(type);
   };
 
