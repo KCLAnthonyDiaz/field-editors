@@ -31,7 +31,7 @@ import { createVoidsPlugin } from './Voids';
 import * as React from "react";
 
 export interface CustomPlatePluginCallback {
-  sdk: FieldExtensionSDK;
+  sdk: FieldAppSDK;
   restrictedMarks: Array<string>;
 }
 

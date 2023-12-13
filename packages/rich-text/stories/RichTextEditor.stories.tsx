@@ -2,10 +2,8 @@
 import * as React from 'react';
 import { useMemo } from 'react';
 
-import { FieldAPI, FieldExtensionSDK } from '@contentful/app-sdk';
-import { IconButton, Paragraph, Text, Note } from '@contentful/f36-components';
 import { FieldAPI, FieldAppSDK } from '@contentful/app-sdk';
-import { IconButton } from '@contentful/f36-components';
+import { IconButton, Paragraph, Text, Note } from '@contentful/f36-components';
 import { CopyIcon } from '@contentful/f36-icons';
 import {
   ActionsPlayground,
@@ -288,6 +286,7 @@ const DemoRichTextEditor = () => {
           }
         />
 
+        {/* @ts-ignore */}
         <ValidationErrors field={field} locales={[] as any} />
         <ActionsPlayground mitt={mitt} renderValue={renderRT} />
       </div>
